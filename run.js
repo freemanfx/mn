@@ -11,7 +11,7 @@ function toDownloadList(body){
   var header = '<?xml version="1.0" encoding="windows-1251" ?>';
   var xmlString = body.substring(header.length);
   xml2js.parseString(xmlString, function(error, result){
-    var list = result;
-    console.log(list);
+    var content = result.rss.channel[0].item;
+    console.log(content);
   });
 }
