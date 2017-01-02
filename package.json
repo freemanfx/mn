@@ -1,0 +1,27 @@
+{
+  "name": "mn",
+  "version": "1.0.0",
+  "description": "",
+  "main": "run.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/freemanfx/mn.git"
+  },
+  "keywords": [
+    "movie",
+    "notifier"
+  ],
+  "author": "Silviu Catarau",
+  "license": "Apache 2.0",
+  "bugs": {
+    "url": "https://github.com/freemanfx/mn/issues"
+  },
+  "homepage": "https://github.com/freemanfx/mn",
+  "dependencies": {
+    "request": "^2.79.0",
+    "xml2js": "^0.4.17"
+  }
+}
