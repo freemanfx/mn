@@ -1,10 +1,10 @@
 var request = require('request');
 var xml2js = require('xml2js');
 
-var config = require('./config');
-var imdb = 'http://rss.imdb.com/user/ur12807014/watchlist';
+var imdb = process.argv[2];
+var feedURL = process.argv[3];
 
-request(config.feedURL, function (error, response, body) {
+request(feedURL, function (error, response, body) {
     xmlStringToObject(body, function (result) {
         var content = result.rss.channel[0].item;
         match(content);
