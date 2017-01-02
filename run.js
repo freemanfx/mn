@@ -3,13 +3,25 @@ var xml2js = require('xml2js');
 
 var imdb = process.argv[2];
 var feedURL = process.argv[3];
+var updateIntervalMinutes = process.argv[4] || 10;
 
-request(feedURL, function (error, response, body) {
-    xmlStringToObject(body, function (result) {
-        var content = result.rss.channel[0].item;
-        match(content);
+run();
+
+function run() {
+    processFeeds();
+    setInterval(processFeeds, updateIntervalMinutes * 60 * 1000);
+}
+
+
+function processFeeds() {
+    console.log('Processing feeds...');
+    request(feedURL, function (error, response, body) {
+        xmlStringToObject(body, function (result) {
+            var content = result.rss.channel[0].item;
+            match(content);
+        });
     });
-});
+}
 
 function xmlStringToObject(body, callback) {
     var header = '<?xml version="1.0" encoding="windows-1251" ?>';
