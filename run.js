@@ -12,22 +12,30 @@ function run() {
     setInterval(processFeeds, updateIntervalMinutes * 60 * 1000);
 }
 
-
 function processFeeds() {
     console.log('Processing feeds...');
     request(feedURL, function (error, response, body) {
-        xmlStringToObject(body, function (result) {
-            var content = result.rss.channel[0].item;
-            match(content);
-        });
+        if (error) {
+            console.log(error);
+        } else {
+            xmlStringToObject(body, function (result) {
+                var content = result.rss.channel[0].item;
+                match(content);
+            });
+        }
     });
 }
 
 function xmlStringToObject(body, callback) {
     var header = '<?xml version="1.0" encoding="windows-1251" ?>';
     var xmlString = body.substring(header.length);
+    console.log('Converting xmlString:' + xmlString)
     xml2js.parseString(xmlString, function (error, result) {
-        callback(result)
+        if (!error) {
+            callback(result)
+        } else {
+            console.log('Xml conversion failed: ' + error);
+        }
     });
 }
 
