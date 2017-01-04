@@ -1,9 +1,11 @@
 var request = require('request');
 var xml2js = require('xml2js');
+var notification = require('./notification');
 
 var imdb = process.argv[2];
 var feedURL = process.argv[3];
 var updateIntervalMinutes = process.argv[4] || 10;
+var destinationEmail = process.argv[5] || 'user@mailinator.com';
 
 run();
 
@@ -55,6 +57,7 @@ function match(content) {
 
         console.log('Matches: ');
         console.log(matches);
+        notification.sendNotification(matches, destinationEmail);
     });
 }
 
