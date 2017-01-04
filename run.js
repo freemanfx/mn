@@ -12,7 +12,10 @@ run();
 
 function run() {
     processFeeds();
-    setInterval(processFeeds, updateIntervalMinutes * 60 * 1000);
+    console.log('Processing feeds at ' + updateIntervalMinutes + ' minutes interval');
+    var delay = updateIntervalMinutes * 60 * 1000;
+    console.log('Interval ms: ' + delay);
+    setInterval(processFeeds, delay);
 }
 
 function processFeeds() {
@@ -104,5 +107,5 @@ http.createServer(function (request, response) {
 
 //prevent heroku from killing the app
 setInterval(function () {
-    http.get('https://movie-notifier.herokuapp.com/');
+    http.get('http://movie-notifier.herokuapp.com/');
 }, 5 * 60 * 1000);
