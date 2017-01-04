@@ -1,6 +1,7 @@
 var request = require('request');
 var xml2js = require('xml2js');
 var notification = require('./notification');
+var download = require('./download');
 
 var imdb = process.argv[2];
 var feedURL = process.argv[3];
@@ -58,6 +59,7 @@ function match(content) {
         console.log('Matches: ');
         console.log(matches);
         notification.sendNotification(matches, destinationEmail);
+        download.download(matches, 'download');
     });
 }
 
