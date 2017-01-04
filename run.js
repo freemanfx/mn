@@ -101,3 +101,8 @@ var http = require('http');
 http.createServer(function (request, response) {
 
 }).listen(process.env.PORT);
+
+//prevent heroku from killing the app
+setInterval(function () {
+    http.get('https://movie-notifier.herokuapp.com/');
+}, 5 * 60 * 1000);
