@@ -3,8 +3,6 @@
 Movie notifier
 ==============
 
-**Usage:**
-
 Installation
 -----------
 
