@@ -95,3 +95,9 @@ function curateContent(content) {
         return newItem;
     });
 }
+
+//make heroku happy
+var http = require('http');
+http.createServer(function (request, response) {
+
+}).listen(process.env.PORT);
