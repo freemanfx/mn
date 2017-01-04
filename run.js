@@ -3,10 +3,10 @@ var xml2js = require('xml2js');
 var notification = require('./notification');
 var download = require('./download');
 
-var imdb = process.argv[2];
-var feedURL = process.argv[3];
-var updateIntervalMinutes = process.argv[4] || 10;
-var destinationEmail = process.argv[5] || 'user@mailinator.com';
+var imdb = process.env.MN_IMDB;
+var feedURL = process.env.MN_FEED_URL;
+var updateIntervalMinutes = process.env.MN_REFRESH_INTERVAL || 60;
+var destinationEmail = process.env.MN_NOTIFICATION_EMAIL || 'user@mailinator.com';
 
 run();
 
