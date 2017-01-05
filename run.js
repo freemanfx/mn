@@ -35,7 +35,7 @@ function processFeeds() {
 function xmlStringToObject(body, callback) {
     var header = '<?xml version="1.0" encoding="windows-1251" ?>';
     var xmlString = body.substring(header.length);
-    console.log('Converting xmlString:' + xmlString)
+    // console.log('Converting xmlString:' + xmlString);
     xml2js.parseString(xmlString, function (error, result) {
         if (!error) {
             callback(result)
@@ -61,8 +61,10 @@ function match(content) {
 
         console.log('Matches: ');
         console.log(matches);
-        notification.sendNotification(matches, destinationEmail);
-        download.download(matches, 'download');
+        if (matches.length > 0) {
+            notification.sendNotification(matches, destinationEmail);
+            download.download(matches, 'download');
+        }
     });
 }
 
