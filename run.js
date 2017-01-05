@@ -104,7 +104,7 @@ function curateContent(content) {
 //make heroku happy
 var http = require('http');
 http.createServer(function (request, response) {
-
+    response.end('It works');
 }).listen(process.env.PORT);
 
 //prevent heroku from killing the app
