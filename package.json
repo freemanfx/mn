@@ -4,6 +4,7 @@
   "description": "",
   "main": "run.js",
   "scripts": {
+    "start": "node run.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,6 +22,7 @@
   },
   "homepage": "https://github.com/freemanfx/mn",
   "dependencies": {
+    "emailjs": "^1.0.8",
     "request": "^2.79.0",
     "xml2js": "^0.4.17"
   }
