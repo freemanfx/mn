@@ -74,10 +74,12 @@ function curateContent(content) {
         var matchResults = oldTitle.match(regex);
 
         var newItem = {};
-        newItem.title = matchResults[1].replace('.', ' ');
-        newItem.year = matchResults[2];
-        newItem.fullTitle = oldTitle;
-        newItem.link = item.link[0];
+        if (matchResults) {
+            newItem.title = matchResults[1].replace('.', ' ');
+            newItem.year = matchResults[2];
+            newItem.fullTitle = oldTitle;
+            newItem.link = item.link[0];
+        }
 
         return newItem;
     });
